@@ -21,11 +21,11 @@ init()
 screen = display.set_mode((0, 0), FULLSCREEN)
 screen_width, screen_height = display.get_surface().get_size()
 
-field_width, field_height = screen_width, screen_height * (1 - INFORMATION_FIELD_HEIGHT)
+field_width, field_height = screen_width, screen_height
 
 surfaces_size = (
-    field_width - 2 * EVOLUTION_FIELD_OUTLINE_WIDTH,
-    field_height - 2 * EVOLUTION_FIELD_OUTLINE_WIDTH,
+    field_width,
+    field_height,
 )
 
 nearest_plant_surface = Surface(surfaces_size, SRCALPHA)
@@ -44,17 +44,17 @@ def display_texts(text1, text2, text3):
         text_rect2, \
         text_surface3, \
         text_rect3
-    text_surface1 = font.render(text1, True, (255, 255, 0))
+    text_surface1 = font.render(text1, True, (255, 255, 255))
     text_rect1 = text_surface1.get_rect(
-        center=(field_width / 2, field_height + FONT_SIZE)
+        center=(field_width / 2, field_height - 3 * FONT_SIZE)
     )
-    text_surface2 = font.render(text2, True, (255, 255, 0))
+    text_surface2 = font.render(text2, True, (255, 255, 255))
     text_rect2 = text_surface2.get_rect(
-        center=(field_width / 2, field_height + 2 * FONT_SIZE)
+        center=(field_width / 2, field_height - 2 * FONT_SIZE)
     )
-    text_surface3 = font.render(text3, True, (255, 255, 0))
+    text_surface3 = font.render(text3, True, (255, 255, 255))
     text_rect3 = text_surface3.get_rect(
-        center=(field_width / 2, field_height + 3 * FONT_SIZE)
+        center=(field_width / 2, field_height - FONT_SIZE)
     )
 
 
